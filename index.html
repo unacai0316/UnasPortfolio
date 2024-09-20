@@ -44,14 +44,14 @@
             const response = await fetch("http://localhost:3000/translate", {
                 method: "POST",
                 body: JSON.stringify({
-                    q: text,   // 這裡使用 text 變數，從輸入框獲取
+                    q: text,  // 使用用戶輸入的內容
                     source: "en",
                     target: "zh-TW"
                 }),
                 headers: { "Content-Type": "application/json" }
             });
 
-            // 檢查是否有錯誤
+            // 檢查回傳是否成功
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -66,7 +66,7 @@
             }
         } catch (error) {
             console.error("Error during translation:", error);
-            return "翻譯錯誤";  // 回傳預設錯誤訊息
+            return "翻譯錯誤";
         }
     }
 
