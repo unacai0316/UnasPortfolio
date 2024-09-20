@@ -40,15 +40,19 @@
 <script>
     async function fetchTranslation(text) {
         try {
-            const response = await fetch("https://libretranslate.com/translate", {
-                method: "POST",
-                body: JSON.stringify({
-                    q: text,
+            const response = await fetch("http://localhost:3000/https://libretranslate.com/translate", {
+               method: "POST",
+               body: JSON.stringify({
+                   q: "Hello!",
                     source: "en",
-                    target: "zh-TW"  // 翻譯成繁體中文
+                   target: "zh-TW"
                 }),
                 headers: { "Content-Type": "application/json" }
-            });
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+
 
             // 檢查回傳是否成功
             if (!response.ok) {
