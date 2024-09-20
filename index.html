@@ -37,32 +37,26 @@
         <p id="encrypted"></p>
     </div>
 </div>
+
 <script>
     async function fetchTranslation(text) {
         try {
-            const response = await fetch("http://localhost:3000/https://libretranslate.com/translate", {
-               method: "POST",
-               body: JSON.stringify({
-                   q: "Hello!",
+            const response = await fetch("http://localhost:3000/translate", {
+                method: "POST",
+                body: JSON.stringify({
+                    q: text,   // 這裡使用 text 變數，從輸入框獲取
                     source: "en",
-                   target: "zh-TW"
+                    target: "zh-TW"
                 }),
                 headers: { "Content-Type": "application/json" }
-            })
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.error('Error:', error));
+            });
 
-
-            // 檢查回傳是否成功
+            // 檢查是否有錯誤
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
             const data = await response.json();
-
-            // 日誌打印回傳的完整數據，便於調試
-            console.log("API response data:", data);
 
             // 確認數據是否包含 `translatedText`
             if (data.translatedText) {
@@ -76,25 +70,23 @@
         }
     }
 
-
     async function translateAndEncrypt() {
         const inputWord = document.getElementById('inputWord').value.toLowerCase();
 
-        // Step 1: 使用LibreTranslate API進行翻譯
+        // Step 1: 使用 LibreTranslate API 進行翻譯
         const translatedText = await fetchTranslation(inputWord);
 
         // Step 2: 檢查 translatedText 是否存在
         if (translatedText !== "翻譯錯誤") {
             document.getElementById('translated').innerText = `中文翻譯: ${translatedText}`;
         
-            // 其他步驟...
+            // 其他步驟... 
+            // 可以繼續進行加密步驟
         } else {
             document.getElementById('translated').innerText = `翻譯失敗，請再試一次。`;
         }
     }
 </script>
-
-
 
 </body>
 </html>
