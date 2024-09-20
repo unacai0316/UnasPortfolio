@@ -40,35 +40,36 @@
 
 <script>
     async function fetchTranslation(text) {
-        try {
-            const response = await fetch("http://localhost:3000/translate", {
-                method: "POST",
-                body: JSON.stringify({
-                    q: text,  // 使用用戶輸入的內容
-                    source: "en",
-                    target: "zh-TW"
-                }),
-                headers: { "Content-Type": "application/json" }
-            });
+    try {
+        const response = await fetch("http://localhost:3000/translate", {
+            method: "POST",
+            body: JSON.stringify({
+                q: text, // 使用傳入的文本
+                source: "en",
+                target: "zh-TW"
+            }),
+            headers: { "Content-Type": "application/json" }
+        });
 
-            // 檢查回傳是否成功
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
+        // 檢查回傳是否成功
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
 
-            const data = await response.json();
+        const data = await response.json();
 
-            // 確認數據是否包含 `translatedText`
-            if (data.translatedText) {
-                return data.translatedText;
-            } else {
-                throw new Error("Invalid response format");
-            }
-        } catch (error) {
-            console.error("Error during translation:", error);
-            return "翻譯錯誤";
+        // 確認數據是否包含 `translatedText`
+        if (data.translatedText) {
+            return data.translatedText;
+        } else {
+            throw new Error("Invalid response format");
+        }
+    } catch (error) {
+        console.error("Error during translation:", error);
+        return "翻譯錯誤";
         }
     }
+
 
     async function translateAndEncrypt() {
         const inputWord = document.getElementById('inputWord').value.toLowerCase();
