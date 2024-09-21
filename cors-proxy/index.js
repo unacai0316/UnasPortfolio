@@ -14,8 +14,8 @@ app.post('/translate', async (req, res) => {
     const { q, source, target } = req.body;
 
     try {
-        // 發送請求到 LibreTranslate
-        const response = await axios.post('https://libretranslate.com/translate', {
+        // 發送請求到 CORS 代理的 LibreTranslate
+        const response = await axios.post('https://cors-anywhere.herokuapp.com/https://libretranslate.com/translate', {
             q,
             source,
             target
