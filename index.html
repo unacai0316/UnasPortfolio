@@ -44,12 +44,13 @@
         const response = await fetch("https://d322-2600-1012-b00f-6960-a037-28a9-73b2-e8/translate", {
             method: "POST",
             body: JSON.stringify({
-                q: inputWord,
+                q: inputWord, // 使用用戶輸入的單詞
                 source: "en",
                 target: "zh-TW"
             }),
             headers: { "Content-Type": "application/json" }
         });
+
 
         // 檢查回傳是否成功
         if (!response.ok) {
