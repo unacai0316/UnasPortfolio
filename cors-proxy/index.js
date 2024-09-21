@@ -3,7 +3,9 @@ const cors = require('cors');
 const axios = require('axios'); // 使用 axios 來發送請求
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: '*', // 或者指定你的前端網址
+}));
 app.use(express.json()); // 解析 JSON 請求體
 
 // 處理翻譯請求
