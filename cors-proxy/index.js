@@ -4,7 +4,7 @@ const axios = require('axios'); // 使用 axios 來發送請求
 
 const app = express();
 app.use(cors({
-    origin: 'http://d322-2600-1012-b00f-6960-a037-28a9-73b2-e8', // 確保沒有換行符
+    origin: 'https://d322-2600-1012-b00f-6960-a037-28a9-73b2-e8', // 確保沒有換行符
 }));
 
 app.use(express.json()); // 解析 JSON 請求體
