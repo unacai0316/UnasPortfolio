@@ -7,30 +7,26 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-        }
-        .container {
-            margin: 0 auto;
             text-align: center;
-            max-width: 600px;
+            margin: 20px;
         }
         input, button {
             padding: 10px;
             margin: 10px;
-            font-size: 1.2em;
+            font-size: 1em;
         }
         .result {
-            font-size: 1.4em;
             margin-top: 20px;
+            font-size: 1.2em;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
+<div>
     <h1>Word Translation & Encryption</h1>
     <input type="text" id="inputWord" placeholder="Enter an English word">
     <button onclick="translateAndEncrypt()">Translate & Encrypt</button>
-
     <div class="result">
         <p id="translated"></p>
         <p id="bopomofo"></p>
@@ -38,63 +34,6 @@
     </div>
 </div>
 
-<script>
-    async function fetchTranslation(text) {
-    try {
-        // 輸出請求的內容
-        console.log(JSON.stringify({
-            q: text,
-            source: "en",
-            target: "zh-TW"
-        }));
-
-        const response = await fetch(`https://cors-anywhere.herokuapp.com/https://libretranslate.com/translate`, {
-            method: "POST",
-            body: JSON.stringify({
-                q: text,
-                source: "en",
-                target: "zh-TW"
-            }),
-            headers: { "Content-Type": "application/json" }
-        });
-
-        // 檢查回傳是否成功
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        // 確認數據是否包含 `translatedText`
-        if (data.translatedText) {
-            return data.translatedText;
-        } else {
-            throw new Error("Invalid response format");
-        }
-    } catch (error) {
-        console.error("Error during translation:", error);
-        return "翻譯錯誤";
-    }
-}
-
-
-    async function translateAndEncrypt() {
-        const inputWord = document.getElementById('inputWord').value.toLowerCase();
-
-        // Step 1: 使用 LibreTranslate API 進行翻譯
-        const translatedText = await fetchTranslation(inputWord);
-
-        // Step 2: 檢查 translatedText 是否存在
-        if (translatedText !== "翻譯錯誤") {
-            document.getElementById('translated').innerText = `中文翻譯: ${translatedText}`;
-        
-            // 其他步驟... 
-            // 可以繼續進行加密步驟
-        } else {
-            document.getElementById('translated').innerText = `翻譯失敗，請再試一次。`;
-        }
-    }
-</script>
-
+<script src="index.js"></script>
 </body>
 </html>

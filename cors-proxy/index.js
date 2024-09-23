@@ -1,41 +1,49 @@
-const express = require('express');
-const cors = require('cors');
-const axios = require('axios'); // 使用 axios 來發送請求
-
-const app = express();
-app.use(cors({
-    origin: 'https://d322-2600-1012-b00f-6960-a037-28a9-73b2-e8', // 確保這裡是你的前端網址
-}));
-
-app.use(express.json()); // 解析 JSON 請求體
-
-
-// 處理翻譯請求
-app.post('/translate', async (req, res) => {
-    const { q, source, target } = req.body;
-
+async function fetchTranslation(text) {
     try {
-        // 發送請求到 CORS 代理的 LibreTranslate
-        const response = await axios.post('https://cors-anywhere.herokuapp.com/https://libretranslate.com/translate', {
-            q,
-            source,
-            target
+        const response = await fetch(`https://cors-anywhere.herokuapp.com/https://libretranslate.com/translate`, {
+            method: "POST",
+            body: JSON.stringify({
+                q: text,
+                source: "en",
+                target: "zh-TW"
+            }),
+            headers: { "Content-Type": "application/json" }
         });
 
-        // 檢查 API 回應格式
-        if (response.data && response.data.translatedText) {
-            res.json(response.data);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (data.translatedText) {
+            return data.translatedText;
         } else {
-            res.status(500).json({ error: '無效的 API 回應格式' });
+            throw new Error("Invalid response format");
         }
     } catch (error) {
         console.error("Error during translation:", error);
-        res.status(500).json({ error: '翻譯錯誤' }); // 返回錯誤信息
+        return "翻譯錯誤";
     }
-});
+}
 
+async function translateAndEncrypt() {
+    const inputWord = document.getElementById('inputWord').value.toLowerCase();
 
-// 啟動伺服器
-app.listen(3000, () => {
-    console.log('CORS Proxy is running on port 3000');
-});
+    const translatedText = await fetchTranslation(inputWord);
+
+    if (translatedText !== "翻譯錯誤") {
+        document.getElementById('translated').innerText = `中文翻譯: ${translatedText}`;
+        
+        // 這裡可以加入加密的邏輯，現在只是示範
+        const encryptedText = simpleEncrypt(translatedText);
+        document.getElementById('encrypted').innerText = `加密結果: ${encryptedText}`;
+    } else {
+        document.getElementById('translated').innerText = `翻譯失敗，請再試一次。`;
+    }
+}
+
+// 簡單加密函數的範例，這裡可以根據需要進行修改
+function simpleEncrypt(text) {
+    return text.split('').reverse().join(''); // 反轉字串作為加密示範
+}
