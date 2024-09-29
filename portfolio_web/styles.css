@@ -1,0 +1,151 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFE4E1;
+    color: #000;
+    margin: 28px;
+    padding: 0;
+}
+
+header {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 40px;
+    margin: 20px 32px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed; /* 固定定位 */
+    top: 0; /* 固定在畫面上方 */
+    left: 0;
+    right: 0;
+    z-index: 1000; /* 確保 header 在最上層 */
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Rammetto One', cursive; /* 新增 */
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+}
+
+nav ul li {
+    margin-right: 40px; /* 增加目錄文字之間的間隔 */
+}
+
+nav ul li:last-child {
+    margin-right: 0; /* 移除最後一個項目的右邊距 */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #000;
+    font-family: 'Rammetto One', cursive; /* 新增 */
+    font-size: 16px; /* 新增，可以根據需要調整 */
+}
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px);
+    margin-top: 100px; /* 確保整個 section 不會被 nav bar 遮擋 */
+}
+
+#hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    position: relative; /* 新增 */
+}
+
+.hero-text {
+    font-family: 'Raleway', sans-serif; /* 新增 */
+    width: 30%; /* 新增 */
+}
+
+.hero-text h2 {
+    font-size: 70px;
+    font-weight: lighter;
+    line-height: 1.6;
+}
+
+.hero-description {
+    font-family: 'Raleway', sans-serif;
+    line-height: 1.6;
+    width: 30%; /* 新增 */
+    text-align: right;
+}
+
+.hero-description h3 {
+    font-size: 44px;
+    font-weight: lighter;
+}
+
+.hero-description p {
+    font-weight: lighter;
+    font-size: 18px;
+}
+
+#bear-container {
+    width: 600px;
+    height: 600px;
+    position: absolute; /* 修改 */
+    left: 50%; /* 新增 */
+    top: 50%; /* 新增 */
+    transform: translate(-50%, -50%); /* 新增 */
+}
+
+#canvas3d {
+    width: 100%;
+    height: 100%;
+    transform: scale(1.5);
+}
+
+#circle-text {
+    position: absolute;
+    top: 50%;
+    left: 58%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* 確保它在熊的後面 */
+    width: 100%;
+    height: 100%;
+}
+
+#circle-text img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 讓圖片自適應容器 */
+}
+
+canvas {
+    position: relative;
+    z-index: 2; /* 確保熊在環形文字上方 */
+    width: 100%;
+    height: 100%;
+}
+
+/* 響應式調整 */
+@media (max-width: 1200px) {
+    #hero {
+        flex-direction: column;
+    }
+    
+    #bear-container {
+        position: static;
+        transform: none;
+        width: 400px;
+        height: 400px;
+        margin: 20px 0;
+    }
+
+    .hero-text, .hero-description {
+        width: 100%;
+        text-align: center;
+    }
+}

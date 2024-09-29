@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una Cai - IX & Visual Designer</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- 新增 Google Fonts 引用（Rammetto One）(Raleway) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>UNA CAI</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#mywork">MY WORK</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="home">
+        <section id="hero">
+            <div class="hero-text">
+                <h2>BUILDING<br>A SOFTER<br>WORLD<br>WITH<br>DESIGN</h2>
+            </div>
+            <div id="bear-container">
+                <div id="circle-text">
+                    <img src="images/circle_text.png" alt="Circular text background">
+                </div>
+                <canvas id="canvas3d"></canvas>
+            </div>
+            <div class="hero-description">
+                <h3>IX & VISUAL<br>DESIGNER</h3>
+                <p>-ABOUT ME</p>
+            </div>
+        </section>
+    </main>
+    <script type="module">
+        import { Application } from './runtime.js';
+        const canvas = document.getElementById('canvas3d');
+        const app = new Application(canvas);
+        app.load('./scene.splinecode');
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
