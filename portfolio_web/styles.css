@@ -176,6 +176,7 @@ canvas {
 @media (max-width: 767px) {
     body {
         margin: 14px;
+        overflow-x: hidden; /* 禁止橫向捲動 */
     }
 
     header {
@@ -256,6 +257,7 @@ canvas {
         height: auto;
         margin-left: 0;
         order: 1;
+
     }
 
     #circle-text {
@@ -268,7 +270,7 @@ canvas {
     }
 
     #canvas3d {
-        width: 100%; /* 調整寬度以適應較小螢幕 */
+        width: 150%; /* 調整寬度以適應較小螢幕 */
         height: auto; /* 自動調整高度以保持比例 */
         transform: translate(-55%, 0%);
         left: 0%; /* 確保容器在螢幕中央 */
