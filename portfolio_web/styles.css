@@ -181,8 +181,8 @@ canvas {
     header {
         flex-direction: row;
         justify-content: space-between;
-        padding: 16px;
-        margin: 10px 16px;
+        padding: 2px 24px;
+        margin: 14px 16px;
     }
 
     nav {
@@ -232,6 +232,14 @@ canvas {
         position: relative;
         z-index: 2;
     }
+    .hero-text {
+        order: 3;
+    }
+    .hero-description {
+        order: 2;
+    }
+    /* 這裡是為了讓重新排列hero裡內容順序 */
+
 
     .hero-text h2 {
         font-size: 24px;
@@ -247,6 +255,7 @@ canvas {
         width: 100%;
         height: auto;
         margin-left: 0;
+        order: 1;
     }
 
     #circle-text {
