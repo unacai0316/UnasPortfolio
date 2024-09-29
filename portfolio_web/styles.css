@@ -257,16 +257,14 @@ canvas {
 
     #bear-container {
         position: relative;
-        transform: none;
         width: 100%;
         height: auto;
         margin-left: 0;
-        transform: translate(-58%, 0); /* 確保容器在螢幕中央 */
+        transform: translate(-60%, 0); /* 確保容器在螢幕中央 */
         order: 1;
         box-sizing: border-box; /* 包含內邊距和邊框在內的總寬度 */
 
     }
-
     #circle-text {
         top: 50%;
         left: 0%;
@@ -278,8 +276,8 @@ canvas {
 
    /* 調整canvas3d的大小以適應較小螢幕 */
    #canvas3d {
-    width: 400px; /* 增加寬度 */
-    height: 400px; /* 增加高度 */
+    width: 500px; /* 增加寬度 */
+    height: 500px; /* 增加高度 */
     left: 0%; /* 確保容器在螢幕中央 */
     object-fit: cover; /* 確保內容填滿容器 */
     overflow: hidden; /* 隱藏超出容器的部分 */
