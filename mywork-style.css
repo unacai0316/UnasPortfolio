@@ -1,4 +1,3 @@
-/* mywork-style.css */
 html, body {
     margin: 0;
     padding: 0;
@@ -7,8 +6,9 @@ html, body {
 }
 #mywork .content {
     display: flex;
-    height: 100vh; /* 避免超出視窗範圍 */
-    padding-top: 100px; /* 根據 header 調整 */
+    height: auto; /* 自動調整高度以避免超出視窗範圍 */
+    padding-top: 20px; /* 減少頂部間距 */
+    justify-content: space-between;
 }
 
 #mywork .thumbnails {
@@ -41,54 +41,80 @@ html, body {
     align-items: center;
     height: calc(100vh - 180px); /* 確保主圖片部分不超出視窗高度 */
     margin-left: 20px;
+    padding: 20px; /* 增加內部間距 */
 }
 
-
 #mywork .main-image img {
-    width: 1100px;
-    height: 100%; /* 固定高度，寬度會自動調整 */
-    object-fit: cover; /* 覆蓋整個容器，但可能會裁剪部分內容 */
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-
 /* 平板尺寸 (768px - 1024px) */
 @media (max-width: 1024px) {
-    #mywork .thumbnails {
-        width: 150px;
-    }
 
-    #mywork .thumbnail {
-        height: 80px;
-    }
-}
-
-/* 手机尺寸 (小于 768px) */
-@media (max-width: 767px) {
     #mywork .content {
         flex-direction: column;
-        padding-top: 80px;
+        padding-top: 120px;
+        justify-content: center; /* 置中縮略圖 */
     }
 
     #mywork .thumbnails {
-        width: 100%;
+        width: 100%; /* 使縮略圖佔滿可用寬度 */
         height: auto;
-        flex-direction: row;
-        overflow-x: auto;
+        display: flex;
+        flex-direction: row; /* 橫向排列 */
+        overflow-x: auto; /* 啟用橫向滾動 */
         padding: 10px 0;
     }
 
     #mywork .thumbnail {
-        width: 80px;
-        height: 80px;
+        width: 60px; /* 縮略圖的寬度調整 */
+        height: 60px; /* 縮略圖的高度調整 */
         margin-right: 10px;
-        flex-shrink: 0;
+        flex-shrink: 0; /* 確保縮略圖不會縮小 */
+    }
+}
+
+/* 手機尺寸 (小於 768px) */
+@media (max-width: 767px) {
+    #mywork .content {
+        flex-direction: column;
+        padding-top: 20px;
+    }
+
+    #mywork .thumbnails {
+        width: 100%; /* 縮略圖區域佔滿可用寬度 */
+        height: auto;
+        display: flex;
+        flex-direction: row; /* 橫向排列 */
+        overflow-x: auto; /* 啟用橫向滾動 */
+        padding: 4px 4px;
+        scrollbar-width: thin; /* 調整滾動條寬度（可選） */
+        justify-content: center; /* 置中縮略圖 */
+    }
+
+    #mywork .thumbnail {
+        width: 10vw; /* 縮略圖的寬度調整為視窗寬度的10% */
+        height: 10vw; /* 縮略圖的高度調整為視窗寬度的10% */
+        margin-right: 2vw; /* 縮略圖之間的間距調整為視窗寬度的2% */
+        flex-shrink: 0; /* 確保縮略圖不會縮小 */
     }
 
     #mywork .main-image {
         margin-left: 0;
-        margin-top: 20px;
-        height: calc(100vh - 240px); /* 调整高度 */
+        margin-top: 2px;
+        width: 100%; /* 確保主圖片不會超過螢幕寬度 */
+        height: auto; /* 自動調整高度以保持比例 */
+        max-height: calc(100vh - 240px); /* 最大高度不超過螢幕高度 */
+        padding: 4px; /* 增加內部間距 */
+    }
+
+    #mywork .main-image img {
+        width: 80vw;
+        height: auto; /* 避免圖片變形，確保比例正確 */
+        object-fit: contain; /* 顯示完整圖片，避免裁切 */
     }
 }
