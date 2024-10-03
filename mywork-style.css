@@ -54,10 +54,13 @@ html, body {
 
 /* 平板尺寸 (768px - 1024px) */
 @media (max-width: 1024px) {
+    main {
+        padding-top: 30px; /* 減少頂部內距 */
+    }
 
     #mywork .content {
         flex-direction: column;
-        padding-top: 120px;
+        padding-top: 100px;
         justify-content: center; /* 置中縮略圖 */
     }
 
@@ -80,9 +83,16 @@ html, body {
 
 /* 手機尺寸 (小於 768px) */
 @media (max-width: 767px) {
+
+    main {
+        padding-top: 0px; /* 減少頂部內距 */
+    }
+
     #mywork .content {
         flex-direction: column;
-        padding-top: 20px;
+        padding-top: 10px;
+        justify-content: flex-start; /* 讓內容靠上 */
+        align-items: center; /* 置中內容 */
     }
 
     #mywork .thumbnails {
@@ -105,11 +115,14 @@ html, body {
 
     #mywork .main-image {
         margin-left: 0;
-        margin-top: 2px;
+        margin-top: 10px; /* 調整主圖片的頂部間距 */
         width: 100%; /* 確保主圖片不會超過螢幕寬度 */
-        height: auto; /* 自動調整高度以保持比例 */
+        height: 95vh; /* 固定高度以避免圖片過於靠下 */
         max-height: calc(100vh - 240px); /* 最大高度不超過螢幕高度 */
         padding: 4px; /* 增加內部間距 */
+        display: flex;
+        justify-content: center; /* 置中主圖片 */
+        align-items: flex-start; /* 讓主圖片靠上 */
     }
 
     #mywork .main-image img {
