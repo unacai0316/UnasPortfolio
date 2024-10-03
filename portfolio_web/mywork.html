@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNA CAI - My Work</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&family=Raleway:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mywork-style.css">
+</head>
+<body>
+    <header>
+        <h1>UNA CAI</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html#home">HOME</a></li>
+                <li><a href="index.html#about">ABOUT</a></li>
+                <li><a href="#mywork">MY WORK</a></li>
+                <li><a href="index.html#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">☰</div>
+    </header>
+
+    <main id="mywork">
+        <div class="content">
+            <div class="thumbnails">
+                <div class="thumbnail" onclick="showImage('/images/01.png')" style="background-image: url('/images/thumbnail_01.png');"></div>
+                <div class="thumbnail" onclick="showImage('/images/02.png')" style="background-image: url('/images/thumbnail_02.png');"></div>
+                <div class="thumbnail" onclick="showImage('/images/03.png')" style="background-image: url('/images/thumbnail_03.png');"></div>
+                <div class="thumbnail" onclick="showImage('/images/04.png')" style="background-image: url('/images/thumbnail_04.png');"></div>
+                <div class="thumbnail" onclick="showImage('/images/05.png')" style="background-image: url('/images/thumbnail_05.png');"></div>
+                <div class="thumbnail" onclick="showImage('/images/06.png')" style="background-image: url('/images/thumbnail_06.png');"></div>
+                <div class="thumbnail" onclick="showImage('/images/07.png')" style="background-image: url('/images/thumbnail_07.png');"></div>
+                <div class="thumbnail" onclick="showImage('/images/08.png')" style="background-image: url('/images/thumbnail_08.png');"></div>
+            </div>
+            <div class="main-image">
+                <img id="main-img" src="/images/01.png" alt="Selected work">
+            </div>
+        </div>
+    </main>
+
+    <script src="mywork-script.js"></script>
+</body>
+</html>
