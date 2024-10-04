@@ -61,15 +61,30 @@ html, body {
 
 .controls {
     position: absolute;
-    bottom: 2vw; /* 距離底部2vw */
+    bottom: 1vw; /* 距離底部2vw */
     right: 2vw; /* 距離右側2vw */
     text-align: center;
 }
 
 .controls button {
-    padding: 1vw 2vw; /* 使用 vw 單位 */
-    font-size: 1vw; /* 使用 vw 單位 */
+    padding: 0.6vw 1vw; /* 使用 vw 單位 */
+    font-size: 0.5vw; /* 使用 vw 單位 */
     cursor: pointer;
+    background-color: deeppink; /* 背景色設為深粉紅色 */
+    color: white; /* 文字顏色設為白色 */
+    border: none; /* 移除邊框 */
+    border-radius: 0.4vw; /* 圓角邊框 */
+    box-shadow: 0 0.4vw 0.8vw rgba(0, 0, 0, 0.1); /* 添加陰影 */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* 添加過渡效果 */
+}
+
+.controls button:hover {
+    background-color: hotpink; /* 懸停時背景色變為亮粉紅色 */
+    transform: scale(1.1); /* 懸停時放大 */
+}
+
+.controls button.stop {
+    background-color: gray; /* 停止狀態時背景色為灰色 */
 }
 
 /* 平板尺寸 (768px - 1024px) */

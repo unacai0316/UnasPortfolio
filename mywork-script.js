@@ -8,9 +8,15 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.menu-toggle').addEventListener('click', function() {
         document.querySelector('nav').classList.toggle('show');
     });
+
+    // 初始加載時啟動輪播
+    startSlideshow();
+    const button = document.getElementById('playPauseBtn');
+    button.textContent = 'STOP CHANGING';
+    button.style.backgroundColor = 'gray';
 });
 
-// Add image gallery anto functionality
+// Add image gallery auto functionality
 let images = [
     'images/01.png', 'images/02.png', 'images/03.png', 
     'images/04.png', 'images/05.png', 'images/06.png', 
@@ -18,8 +24,8 @@ let images = [
 ];
 
 let currentIndex = 0;
-let intervalId = setInterval(autoSwitchImage, 5000); // 每隔3秒切換一次圖片
-let isPlaying = true; // 判斷是否正在播放
+let intervalId;
+let isPlaying = true; // 初始狀態設置為播放
 
 function showImage(src) {
     document.getElementById('main-img').src = src;
@@ -30,14 +36,20 @@ function autoSwitchImage() {
     showImage(images[currentIndex]);
 }
 
+function startSlideshow() {
+    intervalId = setInterval(autoSwitchImage, 5000); // 每隔5秒切換一次圖片
+}
+
 function togglePlayPause() {
-    const btn = document.getElementById('playPauseBtn');
+    const button = document.getElementById('playPauseBtn');
     if (isPlaying) {
-        clearInterval(intervalId); // 暫停自動切換
-        btn.textContent = 'Play';
+        button.textContent = 'PLAY IT FOR ME';
+        button.style.backgroundColor = 'deeppink';
+        clearInterval(intervalId); // 停止輪播
     } else {
-        intervalId = setInterval(autoSwitchImage, 3000); // 重新開始自動切換
-        btn.textContent = 'Pause';
+        button.textContent = 'STOP CHANGING';
+        button.style.backgroundColor = 'gray';
+        startSlideshow(); // 開始輪播
     }
     isPlaying = !isPlaying;
 }
