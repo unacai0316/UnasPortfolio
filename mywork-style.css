@@ -8,30 +8,36 @@ html, body {
 #mywork .content {
     display: flex;
     height: auto; /* 自動調整高度以避免超出視窗範圍 */
-    padding-top: 8vw; /* 減少頂部間距 */
+    padding-top: 1.8vw; /* 減少頂部間距 */
     justify-content: space-between;
 }
 
 #mywork .thumbnails {
-    width: 20vw; /* 縮略圖區域寬度為視窗寬度的20% */
-    padding: 2vw; /* 使用 vw 單位 */
+    width: auto; /* 縮略圖區域寬度為視窗寬度的20% */
+    padding: 0vw; /* 使用 vw 單位 */
     overflow-y: auto;
+    overflow-x: hidden;
     height: calc(100vh - 18vw); /* 保持縮放一致 */
+    align-self: center; /* 讓縮略圖區域置中 */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 讓縮略圖置中 */
 }
 
 #mywork .thumbnail {
     width: 10vw;
     height: 10vw; /* 縮略圖的高度調整為視窗寬度的10% */
     cursor: pointer;
-    border-radius: 1vw; /* 使用 vw 單位 */
+    border-radius: 1vw; 
     transition: transform 0.3s ease;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    margin-bottom: 1.2vw; /* 增加縮略圖之間的間距 */
 }
 
 #mywork .thumbnail:hover {
-    transform: scale(1.05);
+    transform: scale(1.2);
 }
 
 #mywork .main-image {
@@ -40,27 +46,30 @@ html, body {
     justify-content: center;
     align-items: center;
     height: calc(100vh - 18vw); /* 確保主圖片部分不超出視窗高度 */
-    margin-left: 2vw; /* 使用 vw 單位 */
+    margin-left: 0.3vw; /* 使用 vw 單位 */
     padding: 2vw; /* 使用 vw 單位 */
-}
-
-.controls {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.controls button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
+    position: relative; /* 為了讓子元素可以絕對定位 */
 }
 
 #mywork .main-image img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
+    width: 80vw;
+    height: 80vh;
+    object-fit: contain;
     border-radius: 1vw; /* 使用 vw 單位 */
     box-shadow: 0 0.4vw 0.8vw rgba(0, 0, 0, 0.1); /* 使用 vw 單位 */
+}
+
+.controls {
+    position: absolute;
+    bottom: 2vw; /* 距離底部2vw */
+    right: 2vw; /* 距離右側2vw */
+    text-align: center;
+}
+
+.controls button {
+    padding: 1vw 2vw; /* 使用 vw 單位 */
+    font-size: 1vw; /* 使用 vw 單位 */
+    cursor: pointer;
 }
 
 /* 平板尺寸 (768px - 1024px) */
