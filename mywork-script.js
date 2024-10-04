@@ -1,9 +1,3 @@
-// mywork-script.js
-function showImage(src) {
-    document.getElementById('main-img').src = src;
-}
-
-// Add mobile menu toggle functionality
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.menu-toggle').addEventListener('click', function() {
         document.querySelector('nav').classList.toggle('show');
@@ -14,6 +8,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const button = document.getElementById('playPauseBtn');
     button.textContent = 'STOP CHANGING';
     button.style.backgroundColor = 'gray';
+
+    // 添加縮略圖點擊事件
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    thumbnails.forEach(thumbnail => {
+        thumbnail.addEventListener('click', function() {
+            const imageSrc = this.getAttribute('data-image');
+            showImage(imageSrc);
+        });
+    });
+
+    // 添加播放/暫停按鈕點擊事件
+    button.addEventListener('click', togglePlayPause);
 });
 
 // Add image gallery auto functionality
